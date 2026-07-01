@@ -67,6 +67,22 @@ The PETN input uses:
 - initial radius: `75 A`
 - KMC steps: `1,000,000`
 
+## Run the L-Tryptophan Example
+
+The TRP input is a density-preserving orthorhombic surrogate for the reported
+triclinic L-tryptophan crystal. See
+`examples/trp_l_tryptophan_notes.md` before interpreting morphology results.
+
+```bash
+mkdir -p results
+
+build/cgkmc_run \
+  examples/trp_l_tryptophan.json \
+  results/trp_l_tryptophan.dump \
+  1000 \
+  results/trp_l_tryptophan.log
+```
+
 ## Recreate Figure 2 with OVITO Surface Areas
 
 Run this after generating `results/petn.dump` and `results/petn.log`:
