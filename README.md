@@ -35,8 +35,6 @@ This builds:
 
 - `build/libcgkmc_core.a`
 - `build/cgkmc_run`
-- `build/cgkmc_core_tests`
-- `build/cgkmc_petn_smoke`
 
 The positional arguments are:
 

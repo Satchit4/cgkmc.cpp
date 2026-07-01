@@ -308,48 +308,6 @@ bool Simulation::is_occupied(std::size_t site_id) const
     return occupied_[site_id] != 0;
 }
 
-void Simulation::flip_site_for_testing(std::size_t site_id)
-{
-    flip_site(site_id);
-}
-
-bool Simulation::incremental_state_matches_for_testing(double tolerance) const
-{
-    std::vector<int> counts(site_count_, 0);
-    std::vector<double> fields(site_count_, 0.0);
-    for (std::size_t site = 0; site < site_count_; ++site) {
-        if (occupied_[site]) {
-            for (std::size_t edge = neighbor_offsets_[site]; edge < neighbor_offsets_[site + 1]; ++edge) {
-                const std::size_t neighbor = neighbor_ids_[edge];
-                ++counts[neighbor];
-                fields[neighbor] += neighbor_energies_[edge];
-            }
-        }
-    }
-
-    double energy = 0.0;
-    for (std::size_t site = 0; site < site_count_; ++site) {
-        if (occupied_[site]) {
-            energy += fields[site];
-        }
-    }
-    energy *= 0.5;
-
-    bool matches = std::abs(energy - total_energy_) <= tolerance;
-    for (std::size_t site = 0; site < site_count_; ++site) {
-        const bool expected_solid = occupied_[site]
-            && (static_cast<int>(coordination_number_) - counts[site] > 0);
-        const bool expected_solvent = !occupied_[site] && counts[site] > 0;
-        matches = matches && counts[site] == occupied_neighbor_count_[site];
-        matches = matches && std::abs(fields[site] - local_field_[site]) <= tolerance;
-        matches = matches && solid_interface_.contains(site) == expected_solid;
-        matches = matches && solvent_interface_.contains(site) == expected_solvent;
-        const double expected_weight = expected_solid ? std::exp(config_.solvent.beta * local_field_[site]) : 0.0;
-        matches = matches && std::abs(evaporation_weights_.value(site) - expected_weight) <= tolerance;
-    }
-    return matches;
-}
-
 void Simulation::build_neighbor_graph()
 {
     const double max_cutoff = config_.interactions.cutoffs.back();

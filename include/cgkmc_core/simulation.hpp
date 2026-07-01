@@ -67,9 +67,6 @@ public:
     [[nodiscard]] std::array<double, 3> site_position(std::size_t site_id) const;
     [[nodiscard]] bool is_occupied(std::size_t site_id) const;
 
-    void flip_site_for_testing(std::size_t site_id);
-    [[nodiscard]] bool incremental_state_matches_for_testing(double tolerance) const;
-
 private:
     struct PatternNeighbor {
         int dx{};
