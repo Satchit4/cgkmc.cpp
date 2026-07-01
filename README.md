@@ -1,11 +1,10 @@
 # cg++
 
 `cg++` is a single-threaded C++20 implementation of the Crystal Growth Kinetic
-Monte Carlo (`cgkmc`) model. It keeps the same PETN model and JSON input shape
-as the original Python package, but stores interactions as compact neighbor
+Monte Carlo (`cgkmc`) model. It stores interactions as compact neighbor
 lists and updates local interface state incrementally after each KMC event.
 
-The main architectural difference from the Python implementation is that each
+The main architectural difference from the 'cgkmc' Python implementation is that each
 KMC step avoids a full sparse-matrix interface rebuild over the lattice. The C++
 core maintains:
 
@@ -15,28 +14,10 @@ core maintains:
 - solid and solvent interface sets
 - Fenwick-tree evaporation weights
 
-The implementation assumes valid inputs: three-dimensional orthorhombic,
-periodic lattices with sorted cutoffs and nondegenerate interfaces.
-
-## Repository Status
-
-GitHub normalized the requested repository slug `cg++` to:
-
-```text
-https://github.com/Satchit4/cg-
-```
-
-The project name remains `cg++`.
-
 ## Requirements
-
-Core simulation:
 
 - CMake 3.20 or newer
 - C++20 compiler, such as AppleClang, Clang, or GCC
-
-Optional figure reproduction:
-
 - Python with the `ovito` package
 - Node.js
 - Gnuplot
@@ -56,18 +37,6 @@ This builds:
 - `build/cgkmc_run`
 - `build/cgkmc_core_tests`
 - `build/cgkmc_petn_smoke`
-
-## Run a Small Smoke Example
-
-```bash
-mkdir -p results
-
-build/cgkmc_run \
-  examples/simple_cubic_short.json \
-  results/simple_cubic_cpp.dump \
-  10 \
-  results/simple_cubic_cpp.log
-```
 
 The positional arguments are:
 
@@ -99,25 +68,6 @@ The PETN input uses:
 - interaction energies: `-0.294`, `-0.184`, `-0.002 eV`
 - initial radius: `75 A`
 - KMC steps: `1,000,000`
-
-## Tests
-
-```bash
-ctest --test-dir build --output-on-failure
-```
-
-The test suite checks simple-cubic, BCC, and FCC coordination numbers, PETN
-graph construction and cohesive energy, incremental state consistency against a
-test-only full recompute, dump formatting, and short KMC stepping.
-
-## PETN Smoke Benchmark
-
-```bash
-build/cgkmc_petn_smoke
-```
-
-This exercises the million-site PETN graph and 1,000 KMC steps with and without
-dump output.
 
 ## Recreate Figure 2 with OVITO Surface Areas
 
