@@ -566,23 +566,12 @@ async function main() {
   console.error(`Neighbor counts by basis: ${neighbors.map((items) => items.length).join(", ")}`);
   console.error(`Total lattice sites: ${totalSites}`);
   const { frames, finalFrame } = await parseDump(logEntries, neighbors);
-  const { data, surfaceDensity, kappa } = writeCsv(logEntries, frames);
   writeFinalPointClouds(finalFrame);
 
-  fs.writeFileSync(path.join(resultsDir, "figure2_petn_surface_energy.svg"), figure2Svg(data, { maxX: 20 }));
-  fs.writeFileSync(path.join(resultsDir, "figure2_petn_surface_energy_full.svg"), figure2Svg(data));
   fs.writeFileSync(path.join(resultsDir, "figure3_petn_final_morphology.svg"), figure3Svg(finalFrame));
 
-  const first = data[0];
-  const last = data.at(-1);
-  console.error(`Surface density: ${surfaceDensity.toFixed(8)} sites/A^2`);
-  console.error(`kappa: ${kappa.toFixed(3)} 1/s`);
-  console.error(`Figure 2 data: ${first.gammaMJPerM2.toFixed(2)} -> ${last.gammaMJPerM2.toFixed(2)} mJ/m^2`);
-  console.error(`Wrote ${path.join(resultsDir, "petn_surface_energy.csv")}`);
   console.error(`Wrote ${path.join(resultsDir, "petn_final_points.tsv")}`);
   console.error(`Wrote ${path.join(resultsDir, "petn_final_surface_points.tsv")}`);
-  console.error(`Wrote ${path.join(resultsDir, "figure2_petn_surface_energy.svg")}`);
-  console.error(`Wrote ${path.join(resultsDir, "figure2_petn_surface_energy_full.svg")}`);
   console.error(`Wrote ${path.join(resultsDir, "figure3_petn_final_morphology.svg")}`);
 }
 

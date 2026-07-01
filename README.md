@@ -128,7 +128,6 @@ Outputs:
 
 - `results/petn_ovito_surface_area.csv`
 - `results/petn_surface_energy_ovito.csv`
-- `results/figure2_petn_surface_energy.png`
 - `results/figure2_petn_surface_energy_full.png`
 
 ## Recreate Figure 3
@@ -142,7 +141,6 @@ gnuplot tools/plot_petn_figure3.gp
 
 Outputs:
 
-- `results/petn_surface_energy.csv`
 - `results/petn_final_points.tsv`
 - `results/petn_final_surface_points.tsv`
 - `results/figure3_petn_final_morphology.svg`
