@@ -22,6 +22,11 @@ Makefile
 # Generated simulation and figure outputs
 results/*
 !results/.gitkeep
+!results/petn/
+!results/petn/**
+!results/trp_l_tryptophan/
+!results/trp_l_tryptophan/**
+results/**/*.dump
 
 # Python/Node transient files used by optional analysis tools
 __pycache__/
