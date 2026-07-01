@@ -83,6 +83,29 @@ build/cgkmc_run \
   results/trp_l_tryptophan.log
 ```
 
+After exporting OVITO surface areas for TRP, generate TRP figures with:
+
+```bash
+python tools/export_ovito_surface_area.py \
+  --dump results/trp_l_tryptophan.dump \
+  --output results/trp_l_tryptophan_ovito_surface_area.csv \
+  --radius 7.0 \
+  --smoothing 100
+
+node tools/build_trp_figures.mjs
+gnuplot tools/plot_trp_figure2_ovito.gp
+gnuplot tools/plot_trp_figure3.gp
+```
+
+Outputs:
+
+- `results/trp_l_tryptophan_surface_energy_ovito.csv`
+- `results/figure2_trp_l_tryptophan_surface_energy.png`
+- `results/figure2_trp_l_tryptophan_surface_energy_time_s.png`
+- `results/trp_l_tryptophan_final_points.tsv`
+- `results/trp_l_tryptophan_final_surface_points.tsv`
+- `results/figure3_trp_l_tryptophan_final_morphology.png`
+
 ## Recreate Figure 2 with OVITO Surface Areas
 
 Run this after generating `results/petn.dump` and `results/petn.log`:
