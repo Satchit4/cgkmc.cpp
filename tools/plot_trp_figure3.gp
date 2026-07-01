@@ -14,7 +14,9 @@ unset ylabel
 unset zlabel
 set xyplane 0
 set view equal xyz
-set autoscale xyz
+set autoscale x
+set autoscale y
+set autoscale z
 
 set view 62,38
 splot "results/trp_l_tryptophan_final_points.tsv" every ::1 using 2:3:4 with points pointtype 7 pointsize 0.13 linecolor rgb "#4e79a7"
