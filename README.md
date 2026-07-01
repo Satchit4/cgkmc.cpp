@@ -1,6 +1,6 @@
-# cg++
+# CGkMC.cpp
 
-`cg++` is a single-threaded C++20 implementation of the Crystal Growth Kinetic
+`cgkmc.cpp` is a single-threaded C++20 implementation of the Crystal Growth Kinetic
 Monte Carlo (`cgkmc`) model. It stores interactions as compact neighbor
 lists and updates local interface state incrementally after each KMC event.
 
