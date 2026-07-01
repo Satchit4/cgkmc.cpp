@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use cg++, please cite the PETN cgkmc paper and acknowledge the original cgkmc project."
+title: "cg++: a single-threaded C++ implementation of cgkmc"
+type: software
+authors:
+  - name: "Satchit"
+repository-code: "https://github.com/Satchit4/cg-"
+license: MIT
+version: "0.1.0"
+abstract: "Single-threaded C++20 implementation of the cgkmc kinetic Monte Carlo model with incremental interface updates and PETN figure reproduction tools."
+references:
+  - type: article
+    title: "Kinetic Monte Carlo Prediction of the Morphology of Pentaerythritol Tetranitrate"
+    authors:
+      - family-names: "Jeffries"
+        given-names: "Jacob"
+      - family-names: "Singh"
+        given-names: "Himanshu"
+      - family-names: "Perriot"
+        given-names: "Romain"
+      - family-names: "Negre"
+        given-names: "Christian"
+      - family-names: "Redondo"
+        given-names: "Antonio"
+      - family-names: "Martinez"
+        given-names: "Enrique"
+    journal: "Crystal Growth & Design"
+    year: 2026
+    doi: "10.1021/acs.cgd.5c01428"
+    url: "https://doi.org/10.1021/acs.cgd.5c01428"
+  - type: software
+    title: "Crystal Growth Kinetic Monte Carlo (cgkmc)"
+    authors:
+      - family-names: "Jeffries"
+        given-names: "Jacob"
+    url: "https://github.com/jwjeffr/cgkmc"

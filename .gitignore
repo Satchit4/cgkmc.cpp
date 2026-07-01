@@ -1,0 +1,30 @@
+# Build products
+build*/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+CTestTestfile.cmake
+cmake_install.cmake
+Makefile
+*.a
+*.o
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Local environments and editor/OS files
+.venv/
+.vscode/
+.idea/
+.DS_Store
+
+# Generated simulation and figure outputs
+results/*
+!results/.gitkeep
+
+# Python/Node transient files used by optional analysis tools
+__pycache__/
+*.pyc
+node_modules/
+npm-debug.log*
